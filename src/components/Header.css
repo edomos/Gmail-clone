@@ -4,4 +4,50 @@
     box-sizing: border-box;
 }
 
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    width: 100%;
+}
 
+.header__left {
+    display: flex;
+    align-items: center;
+}
+
+.header__left--img {
+    width: auto;
+    height: 80px;
+    margin: 0 0 0 6px;
+}
+
+.header__middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0.7;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+.header__middle--searchbar {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    outline-width: 0;
+    font-size: medium;
+    background-color: transparent;
+}
+
+.header__middle--dropdown {
+    color: gray;
+}
+
+.header__right {
+    display: flex;
+    padding: 0 20px 0 0;
+}
