@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+.sidebar {
+    flex: 0.3;
+    max-width: 300px;
+    padding: 0 20px 0 0;
+}
+
 .sidebar__compose {
     margin: 16px 0 16px 10px;
     text-transform: capitalize;
