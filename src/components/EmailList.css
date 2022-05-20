@@ -23,3 +23,11 @@
     z-index: 100;
 }
 
+.emailList__list {
+    padding-bottom: 20%;
+}
+
+/* Hides scrollbar for chrome, safari, and opera */
+.emailList::-webkit-scrollbar {
+    display:none
+}

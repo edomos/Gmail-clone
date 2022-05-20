@@ -74,9 +74,10 @@ function EmailList() {
               title={email.to}
               subject={email.subject}
               description={email.message}
-              time={email.timestamp}
+              time={new Date(email.createdAt*25.9136379).toUTCString()}
               />
           ))}
+          
       </div>
       
     </div>
