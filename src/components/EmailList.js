@@ -6,7 +6,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardHideIcon from '@mui/icons-material/KeyboardHide';
 import Settings from "@mui/icons-material/Settings";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./EmailList.css";
 import Section from "./Section"
 import InboxIcon from '@mui/icons-material/Inbox';
@@ -14,8 +14,23 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmailRow from "./EmailRow"
 
+//Firebase
+import { db } from "../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+
 
 function EmailList() {
+    const [emails, setEmails] = useState([]);
+    const emailsCollectionRef = collection(db,"emails")
+    useEffect(() => {
+        const getEmails = async () => {
+            const data = await getDocs(emailsCollectionRef);
+            setEmails(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            console.log(data.docs)
+        };
+        getEmails();
+    }, []);
+
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -52,20 +67,16 @@ function EmailList() {
           <Section Icon={LocalOfferIcon} title="Promotions" color="green" />
       </div>
       <div className="emailList__list">
-          <EmailRow
-          title="Twitch"
-          subject="Hey fellow streamer!!!"
-          description="This is a test"
-          time="10pm"
-          />
-      </div>
-      <div className="emailList__list">
-          <EmailRow
-          title="Twitch"
-          subject="Hey fellow streamer!!!"
-          description="This is a test test test test testttttttttttttttttt"
-          time="10pm"
-          />
+          {emails.map((email) => (
+              <EmailRow 
+              id={email.id}
+              key={email.id}
+              title={email.to}
+              subject={email.subject}
+              description={email.message}
+              time={email.timestamp}
+              />
+          ))}
       </div>
       
     </div>
