@@ -27,7 +27,7 @@ function Login() {
         <div className='login'>
             <div className="login__container">
                 <img src="https://assets-global.website-files.com/5e78f62c08f1bb8c2d788576/60892c3c3b8ef955c8019cbb_new_gmail_logo.svg" />
-            <Button variant='contained' color='primary' onClick={signInWithGoogle}>Login</Button>
+            <Button className="login__button" variant='contained' color='primary' onClick={signInWithGoogle}>Login</Button>
             </div>
         </div>
     )
